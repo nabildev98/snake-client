@@ -8,7 +8,7 @@ const connect = function () {
   });
   conn.setEncoding("utf8");
   conn.on("data", (data) => {
-    console.log("Name: NAA");
+    console.log(data); //Comment out or remove the "hard-coded" Move: up message to the server.
   });
   return conn;
 };
