@@ -9,6 +9,20 @@ const connect = require("./client");
 // interpret incoming data as text
 
 // };
+// setup interface to handle user input from stdin
 
+const handleUserInput = function (key) {
+  if (key === "\u0003") {
+    process.exit();
+  }
+};
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+  stdin.on("data", handleUserInput); //event listener
+  return stdin;
+};
+setupInput();
 console.log("Connecting ...");
-connect();
